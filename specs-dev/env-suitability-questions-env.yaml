@@ -1,0 +1,39 @@
+apiVersion: fission.io/v1
+kind: Environment
+metadata:
+  creationTimestamp: null
+  name: suitability-questions-env
+  namespace: default
+spec:
+  builder:
+    command: build
+    container:
+      name: ""
+      resources: {}
+    image: nexus.sigame.com.br/fission-builder-3.8:0.0.1
+  imagepullsecret: ""
+  keeparchive: false
+  poolsize: 3
+  resources: {}
+  runtime:
+    container:
+      name: ""
+      resources: {}
+    image: nexus.sigame.com.br/fission-async:0.1.6
+    podspec:
+      containers:
+        - name: suitability-questions-env
+          env:
+            - name: ROOT_LOG_LEVEL
+              value: "INFO"
+            - name: ETRIA_LOG_LEVEL
+              value: "INFO"
+            - name: ASGI_FRAMEWORK
+              value: "HYPERCORN"
+            - name: MONGO_CONNECTION_URL
+              value: "mongodb+srv://vini:vini123456@vini-dev.1tummqa.mongodb.net/?retryWrites=true&w=majority"
+            - name: MONGODB_DATABASE_NAME
+              value: "lionx"
+            - name: MONGODB_SUITABILITY_COLLECTION
+              value: "suitability"
+  version: 2
