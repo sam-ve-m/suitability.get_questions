@@ -38,7 +38,7 @@ spec:
       MaxScale: 1
       MinScale: 1
       SpecializationTimeout: 120
-      TargetCPUPercent: 0
+      TargetCPUPercent: 80
     StrategyType: execution
   concurrency: 500
   environment:
@@ -51,5 +51,5 @@ spec:
     packageref:
       name: suitability-questions-fn-e17d827e-693b-4b32-973e-af28f2d31973
       namespace: default
-  requestsPerPod: 1
+  requestsPerPod: 10000
   resources: {}

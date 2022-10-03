@@ -11,18 +11,22 @@ from heimdall_client import HeimdallStatusResponses
 
 
 @pytest.mark.asyncio
-@patch('func.src.services.jwt.service.Heimdall.decode_payload', return_value=(None, HeimdallStatusResponses.SUCCESS))
+@patch(
+    "func.src.services.jwt.service.Heimdall.decode_payload",
+    return_value=(None, HeimdallStatusResponses.SUCCESS),
+)
 async def test_when_valid_jwt_then_return_true(mock_heimdall):
-    result = await JwtService.validate_jwt(jwt='jwt')
+    result = await JwtService.validate_jwt(jwt="jwt")
 
     assert isinstance(result, bool)
     assert result is True
 
 
 @pytest.mark.asyncio
-@patch('func.src.services.jwt.service.Heimdall.decode_payload', return_value=(
-        None, HeimdallStatusResponses.INTERNAL_HEIMDALL_ERROR)
-       )
+@patch(
+    "func.src.services.jwt.service.Heimdall.decode_payload",
+    return_value=(None, HeimdallStatusResponses.INTERNAL_HEIMDALL_ERROR),
+)
 async def test_when_invalid_jwt_then_raises(mock_heimdall):
     with pytest.raises(ErrorOnDecodeJwt):
-        await JwtService.validate_jwt(jwt='jwt')
+        await JwtService.validate_jwt(jwt="jwt")

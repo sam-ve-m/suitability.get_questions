@@ -32,5 +32,3 @@ class SuitabilityRepository(MongoDBInfrastructure):
         suitability_validated = SuitabilityValidator(**suitability)
         suitability_model = SuitabilityModel(suitability=suitability_validated)
         return suitability_model
-
-

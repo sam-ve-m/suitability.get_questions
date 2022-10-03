@@ -11,7 +11,7 @@ spec:
       name: ""
       resources: {}
     image: nexus.sigame.com.br/fission-builder-3.8:0.0.1
-  imagepullsecret: ""
+  imagepullsecret: "nexus-v3"
   keeparchive: false
   poolsize: 3
   resources: {}
@@ -36,4 +36,10 @@ spec:
               value: "lionx"
             - name: MONGODB_SUITABILITY_COLLECTION
               value: "suitability"
+            - name: MNEMOSINE_REDIS_HOST
+              value: "redis://jormungandr:oUjqwnmdDSA391dja@172.30.11.235:6379"
+            - name: REDIS_SUITABILITY_KEY
+              value: "suitability_questions"
+            - name: REDIS_TIME_TO_LIVE
+              value: "3600 * 24"
   version: 2
