@@ -13,12 +13,8 @@ spec:
     image: nexus.sigame.com.br/fission-builder-3.8:0.0.1
   imagepullsecret: "nexus-v3"
   keeparchive: false
-  poolsize: 3
   resources: {}
   runtime:
-    container:
-      name: ""
-      resources: {}
     image: nexus.sigame.com.br/fission-async:0.1.6
     podspec:
       containers:
@@ -42,4 +38,4 @@ spec:
               value: "suitability_questions"
             - name: REDIS_TIME_TO_LIVE
               value: "3600 * 24"
-  version: 2
+  version: 3
