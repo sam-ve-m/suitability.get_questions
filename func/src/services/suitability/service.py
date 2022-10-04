@@ -19,6 +19,6 @@ class SuitabilityService:
             await AsyncCache.save(
                 key=config("REDIS_SUITABILITY_KEY"),
                 value=result,
-                time_to_live=eval(config("REDIS_TIME_TO_LIVE")),
+                time_to_live=int(config("REDIS_TIME_TO_LIVE")),
             )
         return result
