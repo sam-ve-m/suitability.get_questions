@@ -37,7 +37,7 @@ spec:
             - name: REDIS_SUITABILITY_KEY
               value: "suitability_questions"
             - name: REDIS_TIME_TO_LIVE
-              value: "3600 * 24"
+              value: "86400"
             - name: HEIMDALL_FILE_BUCKET_NAME
               value: "heimdall_rsa"
             - name: HEIMDALL_AWS_ACCESS_KEY_ID

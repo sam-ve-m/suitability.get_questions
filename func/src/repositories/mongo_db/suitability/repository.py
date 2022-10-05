@@ -1,7 +1,5 @@
 # Suitability
 from ....infrastructures.mongo_db.infrastructure import MongoDBInfrastructure
-from ....domain.validators.suitability.validator import SuitabilityValidator
-from ....domain.models.suitability.model import SuitabilityModel
 
 
 # Third party
@@ -24,11 +22,9 @@ class SuitabilityRepository(MongoDBInfrastructure):
             raise ex
 
     @classmethod
-    async def get_latest_suitability(cls) -> SuitabilityModel:
+    async def get_latest_suitability(cls) -> dict:
         collection = await cls._get_collection()
         suitability = await collection.find_one(
             {"$query": {}, "$orderby": {"version": -1}}
         )
-        suitability_validated = SuitabilityValidator(**suitability)
-        suitability_model = SuitabilityModel(suitability=suitability_validated)
-        return suitability_model
+        return suitability

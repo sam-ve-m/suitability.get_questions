@@ -18,7 +18,7 @@ async def get_suitability_questions() -> Response:
     try:
         jwt = request.headers.get("x-thebes-answer")
         await JwtService.validate_jwt(jwt=jwt)
-        result = await SuitabilityService.get_latest_questions_with_answers()
+        result = await SuitabilityService.get_latest_questions_with_answer_options()
         response = ResponseModel(
             result=result,
             success=True,
