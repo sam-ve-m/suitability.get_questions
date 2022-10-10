@@ -27,7 +27,7 @@ spec:
             - name: ASGI_FRAMEWORK
               value: "HYPERCORN"
             - name: MONGO_CONNECTION_URL
-              value: "mongodb+srv://vini:vini123456@vini-dev.1tummqa.mongodb.net/?retryWrites=true&w=majority"
+              value: "mongodb://jormungandr:LIwn1In32LdowPqma@172.30.10.75:41000/?authSource=admin&replicaSet=rslionx&readPreference=secondary"
             - name: MONGODB_DATABASE_NAME
               value: "lionx"
             - name: MONGODB_SUITABILITY_COLLECTION
