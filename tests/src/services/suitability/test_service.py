@@ -30,7 +30,11 @@ async def test_when_not_have_suitability_data_in_redis_then_get_in_mongo_and_set
 
 @pytest.mark.asyncio
 @patch('func.src.services.suitability.service.AsyncCache.get', return_value=stub_suitability_mongo_db)
-async def test_when_have_suitability_in_redis_then_return_suitability_data(mock_redis):
+@patch(
+    "func.src.services.suitability.service.config",
+    side_effect=["suitability_key", "suitability_key", "86400"],
+)
+async def test_when_have_suitability_in_redis_then_return_suitability_data(mock_params, mock_redis):
     suitability = await SuitabilityService.get_latest_questions_with_answer_options()
 
     assert isinstance(suitability, dict)
