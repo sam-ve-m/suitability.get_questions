@@ -1,35 +1,35 @@
 include:
-- ./func/*
+- fission.py
 kind: ArchiveUploadSpec
-name: func-lCU9
+name: fission-py-VF4g
 
 ---
 apiVersion: fission.io/v1
 kind: Package
 metadata:
   creationTimestamp: null
-  name: suitability-questions-fn-e17d827e-693b-4b32-973e-af28f2d31973
+  name: acc-suit-quest-get-fn-d011c74b-9c88-4664-a62c-bbb1ddbb3a38
   namespace: default
 spec:
   deployment:
     checksum: {}
+    type: url
+    url: archive://fission-py-VF4g
   environment:
-    name: suitability-questions-env
+    name: acc-suit-quest-get-env
     namespace: default
   source:
     checksum: {}
-    type: url
-    url: archive://func-lCU9
 status:
-  buildstatus: pending
-  lastUpdateTimestamp: "2022-10-02T21:16:09Z"
+  buildstatus: none
+  lastUpdateTimestamp: "2023-01-06T16:32:57Z"
 
 ---
 apiVersion: fission.io/v1
 kind: Function
 metadata:
   creationTimestamp: null
-  name: suitability-questions-fn
+  name: acc-suit-quest-get-fn
   namespace: default
 spec:
   InvokeStrategy:
@@ -38,18 +38,24 @@ spec:
       MaxScale: 3
       MinScale: 1
       SpecializationTimeout: 120
-      TargetCPUPercent: 80
+      TargetCPUPercent: 0
+      hpaMetrics:
+      - resource:
+          name: cpu
+          target:
+            averageUtilization: 80
+            type: Utilization
+        type: Resource
     StrategyType: execution
   concurrency: 500
   environment:
-    name: suitability-questions-env
+    name: acc-suit-quest-get-env
     namespace: default
   functionTimeout: 60
   idletimeout: 120
   package:
-    functionName: main.get_suitability_questions
     packageref:
-      name: suitability-questions-fn-e17d827e-693b-4b32-973e-af28f2d31973
+      name: acc-suit-quest-get-fn-d011c74b-9c88-4664-a62c-bbb1ddbb3a38
       namespace: default
   requestsPerPod: 10000
   resources: {}
