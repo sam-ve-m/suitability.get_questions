@@ -1,9 +1,9 @@
 # Jormungandr
-from src.domain.enums.response import InternalCode
-from src.domain.exceptions.base_exceptions.exception import ServiceException
-from src.domain.models.response.model import ResponseModel
-from src.services.jwt.service import JwtService
-from src.services.suitability.service import SuitabilityService
+from func.src.domain.enums.response import InternalCode
+from func.src.domain.exceptions.base_exceptions.exception import ServiceException
+from func.src.domain.models.response.model import ResponseModel
+from func.src.services.jwt.service import JwtService
+from func.src.services.suitability.service import SuitabilityService
 
 # Standards
 from http import HTTPStatus

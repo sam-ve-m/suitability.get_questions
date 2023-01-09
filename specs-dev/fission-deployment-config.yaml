@@ -4,4 +4,4 @@
 apiVersion: fission.io/v1
 kind: DeploymentConfig
 name: suitability-get-questions
-uid: 9843f20e-f997-4cae-a925-9e4a80094675
+uid: 7df51259-e8df-4b31-a0e8-b9362b4cc42c
